@@ -7,8 +7,12 @@ ws.onmessage = function(data) {
   var msgToDisplay = '<p>Time =>'+new Date().getHours()+':'+new Date().getMinutes()+' message-> '+data.data+'</p>';
   $('#message').append(msgToDisplay);
 };
+ws.onclose = function(err){
+  console.log(err);
+  $('#connection').show();
+};
 function sendToServer(message) {
-  if ('' == $('#input_msg').val()) {
+  if ('' == $('#input_msg').val() || ws.CLOSED) {
     $('#e_alert').show();
   } else {
     ws.send(message);
@@ -18,4 +22,5 @@ function sendToServer(message) {
 }
 $( document ).ready(function() {
   $('#e_alert').hide();
+  $('#connection').hide();
 });
