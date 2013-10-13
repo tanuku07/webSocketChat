@@ -4,4 +4,18 @@ ws.onopen = function(data) {
 };
 ws.onmessage = function(data) {
   console.log("Message received: ", data);
+  var msgToDisplay = '<p>Time =>'+new Date().getHours()+':'+new Date().getMinutes()+' message-> '+data.data+'</p>';
+  $('#message').append(msgToDisplay);
 };
+function sendToServer(message) {
+  if ('' == $('#input_msg').val()) {
+    $('#e_alert').show();
+  } else {
+    ws.send(message);
+    $('#input_msg').val('');
+    $('#e_alert').fadeOut("slow");
+  }
+}
+$( document ).ready(function() {
+  $('#e_alert').hide();
+});

@@ -6,11 +6,20 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<form>
-  <label>Enter Text:
-    <input class="input-sm" type="text" name="msg"/>
-  </label>
-</form>
+<div class="container">
+  <div class="page-header"></div>
+  <div id="message">
+  </div>
+  <div id="e_alert" class="alert alert-danger">Form should not bee empty.</div>
+  <form class="text-center">
+    <label>Enter Text:
+      <input id="input_msg" class="form-control" type="text" name="msg"/>
+    </label>
+    <input type="button" class="btn btn-primary" value="Send" onclick="sendToServer($('#input_msg').val())">
+  </form>
+  <div class="container">
+  </div>
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.10.2.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
